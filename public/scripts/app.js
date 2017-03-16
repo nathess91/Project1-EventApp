@@ -49,6 +49,7 @@ $(document).ready(function() {
         // $searchForm.val(''); // clear the form fields
     });
 
+
     $('#datepicker').datepicker({
       format: "mm/dd/yyyy",
       multidate: false
@@ -78,6 +79,9 @@ $(document).ready(function() {
        }//closes select function
     });//closes autocomplete function
 
+
+
+
     initMap();
 
 }); //closes DOM ready function
@@ -93,66 +97,37 @@ $(document).ready(function() {
     });
   }
 
-//   var input =  (
-//     document.getElementById('pac-input'));
-//     var types = document.getElementById('type-selector');
-//     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-//     map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
-//     var autocomplete = new google.maps.places.Autocomplete(input);
-//     autocomplete.bindTo('bounds', map);
-//     var infowindow = new google.maps.InfoWindow();
-//     var marker = new google.maps.Marker({
-//       map: map,
-//       anchorPoint: new google.maps.Point(0, -29)
-//     });
-//     autocomplete.addListener('place_changed', function() {
-//       infowindow.close();
-//       marker.setVisible(false);
-//       var place = autocomplete.getPlace();
-//       if (!place.geometry) {
-//         window.alert("Autocomplete's returned place contains no geometry");
-//         return;
-//       }
-//       // If the place has a geometry, then present it on a map.
-//       if (place.geometry.viewport) {
-//         map.fitBounds(place.geometry.viewport);
-//       } else {
-//         map.setCenter(place.geometry.location);
-//         map.setZoom(17); // Why 17? Because it looks good.
-//       }
-//     marker.setIcon( /** @type {google.maps.Icon} */ ({
-//       url: place.icon,
-//       size: new google.maps.Size(71, 71),
-//       origin: new google.maps.Point(0, 0),
-//       anchor: new google.maps.Point(17, 34),
-//       scaledSize: new google.maps.Size(35, 35)
-//     }));
-//     marker.setPosition(place.geometry.location);
-//     marker.setVisible(true);
-//     var address = '';
-//     if (place.address_components) {
-//       address = [
-//         (place.address_components[0] && place.address_components[0].short_name || ''),
-//         (place.address_components[1] && place.address_components[1].short_name || ''),
-//         (place.address_components[2] && place.address_components[2].short_name || '')
-//       ].join(' ');
-//     }
-//     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-//     infowindow.open(map, marker);
-//   });
-//   // Sets a listener on a radio button to change the filter type on Places
-//   // Autocomplete.
-//   function setupClickListener(id, types) {
-//     var radioButton = document.getElementById(id);
-//     radioButton.addEventListener('click', function() {
-//       autocomplete.setTypes(types);
-//     });
-//   }
-//   setupClickListener('changetype-all', []);
-//   setupClickListener('changetype-address', ['address']);
-//   setupClickListener('changetype-establishment', ['establishment']);
-//   setupClickListener('changetype-geocode', ['geocode']);
-// }
+  //
+  // $(document).ready(function()
+  // {
+
+  $('body').on("click",'.heart',function()
+  {
+  var A=$(this).attr("id");
+  var B=A.split("like"); //splitting like1 to 1
+  var messageID=B[1];
+  $(this).css("background-position","")
+  var D=$(this).attr("rel");
+
+  $.ajax({
+  type: "POST",
+  url: "message_like_ajax.php",
+  data: dataString,
+  cache: false,
+  success: function(data)
+  {
+  $("#likeCount"+messageID).html(data);
+  if(D === 'like')
+  {
+  $(this).addClass("heartAnimation").attr("rel","unlike"); //applying animation class
+  }
+  else
+  {
+  $(this).removeClass("heartAnimation").attr("rel","like");
+  $(this).css("background-position","left");
+}}}); //ajax end
+
+});//heart click end
 
 function renderMultipleEvents(events) {
   events.forEach(function(event) {
@@ -179,19 +154,8 @@ function renderEvent(event) {
                     <h4 class='inline-header'>${event.eventName}</h4>
                   </li>
                   <li>
-                    <a class="openmodal" href="#contact"  data-toggle="modal" data-id="Peggy Guggenheim Collection - Venice"><span class='eventLocation'>${event.location}</span></a>
-      <div class="modal fade" id="contact" role="dialog" >
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content" id="back" >
-                    <div class="modal-header"> <h4>Location<h4></div>
-                <div class="modal-body">
-                    <div id="map"></div>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-default" data-dismiss="modal">Close</a>
-                </div>
-            </div>
-      </div>
+
+                  <span class='eventLocation'>${event.location}</span>
                     <span class='eventTime pull-right'>&#160;${event.time}</span>
                     <span class='eventDate pull-right'>${event.date}</span>
                   </li>
@@ -226,25 +190,33 @@ function renderEvent(event) {
                                       <ul class="list-group">
 
                                           <h4 class='inline-header'>${event.eventName}</h4>
-                                        </li>
+
 
                                           <span class='eventLocation'>${event.location}</span>
                                           <span class='eventTime pull-right'>&#160;${event.time}</span>
                                           <span class='eventDate pull-right'>${event.date}</span>
-                                        </li>
+
 
                                           <span class='eventDescription'>Hello students! Our next event will be held at 1-5PM. Chime in on this issue to join us as a mentor or student for this event!</span>
-                                        </li>
+
 
                                           <span class='event-date'>19 people interested</span>
-                                        </li>
+
 
                                           <h4 class="inline-header">Keywords:</h4>
                                           <span class='event-keywords'>${event.keywords}</span>
-                                        </li>
                                       </ul>
 
-                        <div class="form-group modal-footer">
+
+
+                                      <div class="form-group modal-footer">
+
+                                    <div class="feed" id="feed1">
+                                      Like if interested
+                                      <div class="heart " id="like1" rel="like"></div>
+                                      <div class="likeCount" id="likeCount1">0</div>
+
+
                           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
