@@ -1,0 +1,25 @@
+{
+  "name": "project1-eventapp",
+  "description": "An app created for the tech community in which a user can explore, create, update, and delete upcoming events.",
+  "main": "server.js",
+  "authors": [
+    "Megan Wiley and Lamar Smith"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "events",
+    "tech",
+    "community"
+  ],
+  "homepage": "https://github.com/nathess91/Project1-EventApp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "body-parser": "^1.17.1"
+  }
+}
