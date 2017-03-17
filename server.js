@@ -46,6 +46,8 @@ app.delete('/api/events/:id', controllers.events.destroy);
 //  SERVER LISTENER
 ///////////////////
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log('So many fun things to do at host 3000!');
+var port = process.env.PORT || 3000;
+
+app.listen(port, function () {
+  console.log('So many fun things to do at host' + port);
 });
