@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "^6.9.5",
+    "npm": "^3.10.10"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mwiley322/Project1-EventApp.git"
@@ -25,7 +29,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "bower": "^1.8.0",
-    "express": "^4.15.2",
+    "express": "4.15.2",
     "mongoose": "^4.8.7",
     "node": "0.0.0"
   }
