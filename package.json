@@ -24,7 +24,9 @@
   "homepage": "https://github.com/mwiley322/Project1-EventApp#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "bower": "^1.8.0",
     "express": "^4.15.2",
-    "mongoose": "^4.8.7"
+    "mongoose": "^4.8.7",
+    "node": "0.0.0"
   }
 }
