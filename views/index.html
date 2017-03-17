@@ -33,21 +33,21 @@
   </div>
   <!--NAV BAR-->
 
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar bg-primary" role="navigation">
       <div class="col-lg-6">
         <!-- SEARCH FORM AND SUBMIT  -->
         <form class="navbar-form" role="search">
           <div class="form-group ui-widget searchHolder">
             <input type="text" class="form-control" id="eventSearchForm" name="keyword" data-error="required text, bro" placeholder="Type a keyword..." required>
             <button type="submit" id="eventSearchButton" class="btn btn-default">Search</button>
+            </form>
           </div>
-        </form>
       </div>
       <div class="col-lg-6">
         <div class="row">
           <!--button to trigger create new event modal-->
           <button type="button" id="createNewEventBtn" class="btn btn-primary pull-right" data-toggle="modal" data-target="#newEventModal">
-            Create Event
+            Create Event&#160;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
           </button>
         </div>
       </div>

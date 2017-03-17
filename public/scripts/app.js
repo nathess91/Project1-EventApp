@@ -61,6 +61,14 @@ $(document).ready(function() {
             //  $(this).val(''); return false;
         } //closes select function
     }); //closes autocomplete function
+    var $moreEventInfoModal = $('#moreEventInfoModal');
+    var $peopleInterested = $moreEventInfoModal.find('#peopleInterested');
+
+    var clicks = 0;
+   function clickME() {
+       clicks += 1;
+       document.getElementById("clicks").innerHTML = clicks;
+}
 
     initMap();
 
@@ -209,10 +217,7 @@ function renderEvent(event) {
                                               <span class='eventLocation'>${event.location}</span>
                                               <span class='eventTime pull-right'>&#160;${event.time}</span>
                                               <span class='eventDate pull-right'>${event.date}</span>
-                                              <span class='eventDescription'>${event.description}</span>
-                                              <span class='event-date'>${event.peopleInterested} people interested</span>
-                                              <h4 class="inline-header">Keywords:</h4>
-                                              <span class='event-keywords'>${event.keywords}</span>
+                                              <span class='eventDescription'>${event.description}</span>    
                                           </ul>
                             <div class="form-group modal-footer">
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
